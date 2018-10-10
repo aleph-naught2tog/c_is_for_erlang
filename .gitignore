@@ -1,0 +1,6 @@
+# Ignore the compiled versions
+*.beam
+external_program
+
+*.iml
+
