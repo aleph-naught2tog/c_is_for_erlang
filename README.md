@@ -13,7 +13,7 @@ _The source for the code comes from the Erlang Interoperability guide, with twea
 
 * To compile the C you can run `gcc -o external_program complex_c.c` (or run the local compile shell script, they're the same).
 
-* Erlang allows hot-module-reloading, so if you want to experiment you can mess around in the source code and then just run `c(complex_erl)`    
+* Erlang allows hot-module-reloading, so if you want to experiment you can mess around in the source code and then just run `c(complex_erl)`
 
 ## Running
 
@@ -26,17 +26,13 @@ you new lines, probably you forgot a closing `.` or didn't close quotes somewher
 
 ```
 1> c(complex_erl).
-%=> {ok,complex_erl}
-
+{ok,complex_erl}
 2> complex_erl:start("./external_program").
-%=> <0.83.0>      % or whatever the PID spawned was
-
+<0.83.0>      % or whatever the PID spawned was
 3> complex_erl:add_one(5).
-%=> 6
-
+6
 4> complex_erl:multiply_by_two(7).
-%=> 14
-
+14
 5> complex_erl:stop
 ```
 
