@@ -7,13 +7,13 @@
 #### Optional
 * Elixir (only required to run the Elixir one)
 
-_The source for the code comes from the Erlang Interoperability guide, with tweaks from me, such as clearer variable names, etc._
+_The source for the code comes from the [Erlang Interoperability guide](http://erlang.org/doc/tutorial/c_port.html), with tweaks from me, such as meaningful names, etc._
 
 ## Compilation notes
 
 * To compile the C you can run `gcc -o external_program complex_c.c` (or run the local compile shell script, they're the same).
 
-* Erlang allows hot-module-reloading, so if you want to experiment you can mess around in the source code and then just run `c(complex_erl)`
+* Erlang allows hot-module-reloading, so if you want to experiment you can mess around in the source code and then just run `c(complex_erl).`
 
 ## Running
 
@@ -34,6 +34,7 @@ you new lines, probably you forgot a closing `.` or didn't close quotes somewher
 4> complex_erl:multiply_by_two(7).
 14
 5> complex_erl:stop
+stop
 ```
 
 To exit, you can do <kbd>ctrl-g</kbd> to stop and then type <kbd>q</kbd> to quit.

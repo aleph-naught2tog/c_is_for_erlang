@@ -1,15 +1,13 @@
 #include <unistd.h>
 
-/*
-    gcc -o external_program port.c
-*/
-
 typedef unsigned char byte;
 
 int read_command(byte *buffer);
 int write_command(byte *buffer, int length);
 int read_exact(byte *buffer, int length);
 int write_exact(byte *buffer, int length);
+
+// The actual functions doing work for us
 int add_one(int first_number);
 int multiply_by_two(int first_number);
 
@@ -52,7 +50,9 @@ int read_command(byte *buffer)
         return -1;
     }
 
-    length = (buffer[0] << 8) | buffer[1]; // ??
+    // Not sure about this part...
+    // Why can we know that there is 2 parts?
+    length = (buffer[0] << 8) | buffer[1];
 
     return read_exact(buffer, length);
 }
@@ -63,12 +63,13 @@ int write_command(byte *buffer, int length)
 {
     byte li; // li means ... what? list-item?
 
-    // ?? what is this?
-    // left shift 8 and ... stick ... what is probably null on the end
+    // right shift 8
+    //    & it with 0xff (which is 11111111)
+    // => the rightmost 8 bits/1 byte of li
     li = (length >> 8) & 0xff;
     write_exact(&li, 1);
 
-    li = length & 0xff; // oh maybe this is two bits total and this is 2?
+    li = length & 0xff;
     write_exact(&li, 1);
 
     return write_exact(buffer, length);
